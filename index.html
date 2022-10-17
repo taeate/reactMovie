@@ -15,43 +15,31 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <script type="text/babel">
-    const root = document.getElementById("root");
+    function Btn(props) {
+        return (
+            <button style={{
+                backgroundColor: "tomato",
+                color: "white",
+                padding: "10px 20px",
+                border: 0,
+                borderRadius: 10
+            }}
+            >
+                {props.text}
+            </button>
+        )
+    };
 
     function App() {
-        const [amount, setAmount] = React.useState();
-        const [flipped, setFlipped] = React.useState(false);
-        const onChange = (event) => {
-            setAmount(event.target.value);
-        };
-        const reset = () => setAmount(0);
-        const onFlip = () => setFlipped(current => !current);
         return (
             <div>
-                <h1>Super Converter</h1>
-                <h4>You want to Convert {amount}</h4>
-                <label htmlFor="minutes">Minutes</label>
-                <input
-                    onChange={onChange}
-                    value={flipped ? amount * 60 : amount}
-                    id="minutes"
-                    type="number"
-                    placeholder="Minutes"
-                    disabled={flipped}
-                />
-                <label htmlFor="hours">Hours</label>
-                <input
-                    onChange={onChange}
-                    value={flipped ? amount : Math.round(amount / 60)}
-                    id="hours"
-                    type="number"
-                    placeholder="Hours"
-                    disabled={!flipped}
-                />
-                <button onClick={reset}>reset</button>
-                <button onClick={onFlip}>Flip</button>
+                <Btn text="Save Change" />
+                <Btn text="Continue" />
             </div>
         )
     };
+
+    const root = document.getElementById("root");
     ReactDOM.render(<App />, root);
 </script>
 
